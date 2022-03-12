@@ -23,8 +23,8 @@ const theme = {
     },
     navlink: {
       fontSize: 24,
-      fontFamily: "heading",
-      fontWeight: "body",
+      fontFamily: "body",
+      fontWeight: "heading",
       color: "text",
       textDecoration: "none",
       mt: 4,
