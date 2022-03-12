@@ -1,37 +1,49 @@
-import * as React from 'react'
-import {Link, graphql} from 'gatsby'
-import Layout from '../../components/layout'
+import * as React from "react";
+import { Link, graphql } from "gatsby";
+import PostList from "../../components/PostList";
 
-const BlogPage = ({data}) => {
-    return(
-        <Layout pageTitle="My Blog Posts">
-            {
-                data.allMdx.nodes.map((node) =>
-                    <article key={node.id}>
-                        <h2>
-                            <Link to={`/blog/${node.slug}`}>{node.frontmatter.title}</Link>
-                        </h2>
-                        <p>Posted:{node.frontmatter.date}</p>
-                    </article>
-                )
-            }
-        </Layout>
-    )
-}
+const BlogPage = ({ data }) => {
+  return (
+    <PostList pageTitle="My Blog Posts">
+      {data.allFile.nodes.map((node) => (
+        <article key={node.childMdx.id}>
+          <h2>
+            <Link
+              to={`/blog/${node.childMdx.id}`}
+              sx={{
+                variant: "styles.navlink",
+                p: 2,
+              }}
+            >
+              {node.childMdx.frontmatter.title}
+            </Link>
+          </h2>
+          <p>Posted:{node.childMdx.frontmatter.date}</p>
+        </article>
+      ))}
+    </PostList>
+  );
+};
 
 export const query = graphql`
-    query {
-        allMdx(sort: {fields: frontmatter___date, order: DESC}) {
-          nodes {
-            frontmatter {
-              date(formatString: "MMMM D, YYYY")
-              title
-            }
-            id
-            slug
+  query {
+    allFile(
+      filter: { sourceInstanceName: { eq: "blog" }, ext: { eq: ".mdx" } }
+      sort: { fields: childrenMdx___frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        sourceInstanceName
+        childMdx {
+          frontmatter {
+            date(formatString: "MMMM D, YYYY")
+            title
           }
+          id
+          slug
         }
+      }
     }
-`
+  }
+`;
 
-export default BlogPage
+export default BlogPage;
