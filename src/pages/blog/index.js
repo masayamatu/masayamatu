@@ -1,6 +1,15 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import PostList from "../../components/PostList";
+import {
+  container,
+  content,
+  heading,
+  navLinks,
+  navLinkItem,
+  navLinkText,
+  siteTitle,
+} from "../../components/layout.module.css";
 
 const BlogPage = ({ data }) => {
   return (

@@ -21,6 +21,9 @@ const theme = {
       mt: 4,
       mb: 2,
     },
+    footer: {
+      bottom: 0,
+    },
     navlink: {
       fontSize: 24,
       fontFamily: "body",
