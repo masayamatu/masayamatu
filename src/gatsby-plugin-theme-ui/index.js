@@ -72,6 +72,11 @@ const theme = {
         width: "25%",
       },
     },
+    h3: {
+      fontSize: 18,
+      fontFamily: "body",
+      fontWeight: "heading",
+    },
   },
 };
 

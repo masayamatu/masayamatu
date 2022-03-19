@@ -68,13 +68,13 @@ const Header = (props) => {
         </Link>
         <Link
           as={GatsbyLink}
-          to="/blog"
+          to="/tech"
           sx={{
             variant: "styles.navlink",
             p: 2,
           }}
         >
-          Blog
+          Tech
         </Link>
         <Link
           as={GatsbyLink}

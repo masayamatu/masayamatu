@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import PostList from "../../components/PostList";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import {
   container,
   content,
@@ -13,12 +14,12 @@ import {
 
 const BlogPage = ({ data }) => {
   return (
-    <PostList pageTitle="My Blog Posts">
+    <PostList pageTitle="My Tech Posts">
       {data.allFile.nodes.map((node) => (
         <article key={node.childMdx.id}>
           <h2>
             <Link
-              to={`/blog/${node.childMdx.id}`}
+              to={`/tech/${node.childMdx.id}`}
               sx={{
                 variant: "styles.navlink",
                 p: 2,
@@ -27,7 +28,10 @@ const BlogPage = ({ data }) => {
               {node.childMdx.frontmatter.title}
             </Link>
           </h2>
-          <p>Posted:{node.childMdx.frontmatter.date}</p>
+          <p>
+            <FaRegCalendarAlt />
+            &nbsp; Posted:{node.childMdx.frontmatter.date}
+          </p>
         </article>
       ))}
     </PostList>
@@ -37,7 +41,7 @@ const BlogPage = ({ data }) => {
 export const query = graphql`
   query {
     allFile(
-      filter: { sourceInstanceName: { eq: "blog" }, ext: { eq: ".mdx" } }
+      filter: { sourceInstanceName: { eq: "tech" }, ext: { eq: ".mdx" } }
       sort: { fields: childrenMdx___frontmatter___date, order: DESC }
     ) {
       nodes {

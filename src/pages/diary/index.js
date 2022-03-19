@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import PostList from "../../components/PostList";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 const BlogPage = ({ data }) => {
   return (
@@ -18,7 +19,10 @@ const BlogPage = ({ data }) => {
               {node.childMdx.frontmatter.title}
             </Link>
           </h2>
-          <p>Posted:{node.childMdx.frontmatter.date}</p>
+          <p>
+            <FaRegCalendarAlt />
+            &nbsp; Posted:{node.childMdx.frontmatter.date}
+          </p>
         </article>
       ))}
     </PostList>

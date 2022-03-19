@@ -1,0 +1,81 @@
+---
+title: "GatsbyのサイトにReact Iconsを導入する"
+date: "2022-03-19"
+hero_image: "image1.jpg"
+hero_image_alt: "image"
+---
+
+import { FaRegCalendarAlt } from "react-icons/fa";
+
+世界の皆さんどうもでございます。masayamatu です。
+
+さて、本日は当サイトのブログ記事一覧表示のデザインが少し
+寂しい気がするので、ここに React Icons を導入してほんの少し
+オシャレな感じにしてみたいと思います。
+
+React Icons の公式ページは[こちら](https://react-icons.github.io/react-icons/)
+
+## 手順
+
+### 1.はじめに
+
+以下のコマンドで React Icons をインストール<br/>
+
+```bash
+npm install react-icons --save
+```
+
+### 2.使いたいアイコンを探す
+
+今回は記事投稿日のところにアイコンを使いたいので、
+カレンダー風のアイコンを検索し、
+FaRegCalendarAlt という名前のアイコン<FaRegCalendarAlt />に決めました。
+
+### 3.コードを埋め込む
+
+さて、あとは、以下のように、コンポーネントをインポートし、
+表示したい箇所にコンポーネントを埋め込むだけです。
+
+```jsx
+//アイコンをインポート
+import { FaRegCalendarAlt } from "react-icons/fa";
+
+const BlogPage = ({ data }) => {
+  return (
+    <PostList pageTitle="My Tech Posts">
+      {data.allFile.nodes.map((node) => (
+        <article key={node.childMdx.id}>
+          <h2>
+            <Link
+              to={`/tech/${node.childMdx.id}`}
+              sx={{
+                variant: "styles.navlink",
+                p: 2,
+              }}
+            >
+              {node.childMdx.frontmatter.title}
+            </Link>
+          </h2>
+          <p>
+            //表示したい箇所にコンポーネントを追加
+            <FaRegCalendarAlt />
+            &nbsp; Posted:{node.childMdx.frontmatter.date}
+          </p>
+        </article>
+      ))}
+    </PostList>
+  );
+};
+```
+
+## 終わりに
+
+React Icons の導入は意外と簡単ですね。
+記事にしようと思ったのはいいものの、初めてのコード部分を
+記述する記事だったので、コードブロックのデザインを導入する方が
+大変でした。。。<br/>
+
+もっと凝ったデザインが良かったのですが、MDX のレンダリングの拡張
+等が必要そうで、時間的に厳しかったので最低限になっています。<br />
+
+今後この辺りも記事にしたいと思います。それでは、また！！
