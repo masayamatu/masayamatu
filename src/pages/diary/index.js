@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import PostList from "../../components/PostList";
+import Tag from "../../components/tag";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 const BlogPage = ({ data }) => {
@@ -22,7 +23,9 @@ const BlogPage = ({ data }) => {
           <p>
             <FaRegCalendarAlt />
             &nbsp; Posted:{node.childMdx.frontmatter.date}
+            <Tag tags={node.childMdx.frontmatter.tags} />
           </p>
+          <hr />
         </article>
       ))}
     </PostList>
@@ -41,6 +44,7 @@ export const query = graphql`
           frontmatter {
             date(formatString: "MMMM D, YYYY")
             title
+            tags
           }
           id
           slug

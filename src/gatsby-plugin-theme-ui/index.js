@@ -42,6 +42,9 @@ const theme = {
         color: "primary",
       },
     },
+    tag: {
+      ml: 2,
+    },
     a: {
       color: "text",
       ":hover": {
