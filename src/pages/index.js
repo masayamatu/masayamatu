@@ -11,7 +11,7 @@ const IndexPage = () => {
         meta={[
           {
             name: "google-site-verification",
-            content: "GtmV7Lk7zuHtow0twCWpy44eq3sXxv9SiHa1wzrZXbQ",
+            content: "BtmV7Lk7zuHtow0twCWpy44eq3sXxv9SiHa1wzrZXbQ",
           },
         ]}
       />
