@@ -23,6 +23,7 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-sitemap",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-theme-ui",
       options: {
