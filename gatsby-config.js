@@ -21,6 +21,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-mdx",
+    "gatsby-plugin-sitemap",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-theme-ui",
