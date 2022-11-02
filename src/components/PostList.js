@@ -31,6 +31,7 @@ const PostList = ({ pageTitle, children }) => {
         </title>
         <header className={siteTitle}>{data.site.siteMetadata.title}</header>
         <Header />
+        <hr />
         <main>
           <h1 className={heading}>{pageTitle}</h1>
           {children}
