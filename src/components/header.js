@@ -1,94 +1,39 @@
-/** @jsxImportSource theme-ui */
 import * as React from "react";
-import { Link } from "theme-ui";
-import { Link as GatsbyLink } from "gatsby";
+import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-const Header = (props) => {
+const Header = () => {
   return (
-    <header
-      sx={{
-        py: 4,
-        variant: "styles.header",
-      }}
-    >
-      <div
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mb: 3,
-        }}
-      >
-        <Link as={GatsbyLink} to="/about" title="About">
+    <header className="py-4">
+      <div className="flex justify-center mb-4">
+        <Link to="/about" className="relative" aria-label="About Page">
           <StaticImage
-            alt="UI Logo"
+            alt="Site Logo"
             src="../images/header.jpg"
-            width="100"
-            height="100"
+            width={100}
+            height={100}
+            className="rounded-full"
           />
-          <span
-            sx={{
-              position: "absolute",
-              width: 1,
-              height: 1,
-              overflow: "hidden",
-              top: -9999,
-            }}
-          >
-            Home
-          </span>
         </Link>
       </div>
-      <div
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Link
-          as={GatsbyLink}
-          to="/"
-          variant="styles.header"
-          sx={{
-            variant: "styles.navlink",
-            p: 2,
-          }}
-        >
-          Home
-        </Link>
-        <Link
-          as={GatsbyLink}
-          to="/about"
-          sx={{
-            variant: "styles.navlink",
-            p: 2,
-          }}
-        >
-          About
-        </Link>
-        <Link
-          as={GatsbyLink}
-          to="/tech"
-          sx={{
-            variant: "styles.navlink",
-            p: 2,
-          }}
-        >
-          Tech
-        </Link>
-        <Link
-          as={GatsbyLink}
-          to="/diary"
-          sx={{
-            variant: "styles.navlink",
-            p: 2,
-          }}
-        >
-          Diary
-        </Link>
-      </div>
+      
+      <nav className="flex flex-wrap justify-center space-x-1 md:space-x-6">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/article">Article</NavLink>
+      </nav>
     </header>
   );
 };
+
+// ナビゲーションリンクコンポーネント
+const NavLink = ({ to, children }) => (
+  <Link 
+    to={to} 
+    className="px-4 py-2 text-xl font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200"
+  >
+    {children}
+  </Link>
+);
 
 export default Header;

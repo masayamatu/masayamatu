@@ -3,6 +3,8 @@ const theme = {
     text: "#393E46",
     background: "#EEEEEE",
     primary: "#FD7013",
+    secondary: "#00ADB5", // 新しい色を追加
+    muted: "#E0E0E0", // バッジの背景色に使用
   },
   fonts: {
     body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -11,6 +13,34 @@ const theme = {
   fontWeights: {
     body: 400,
     heading: 700,
+  },
+  badges: {
+    primary: {
+      color: "background", // テキストの色
+      bg: "primary", // 背景色
+      borderRadius: "8px", // 角丸
+      px: 2, // 水平方向のパディング
+      py: 1, // 垂直方向のパディング
+      ml:2,
+    },
+    secondary: {
+      color: "background",
+      bg: "secondary",
+      borderRadius: "8px",
+      px: 2,
+      py: 1,
+      ml:2,
+    },
+    outline: {
+      color: "primary",
+      bg: "transparent",
+      border: "1px solid",
+      borderColor: "primary",
+      borderRadius: "8px",
+      px: 2,
+      py: 1,
+      ml:2,
+    },
   },
   styles: {
     header: {

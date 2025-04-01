@@ -5,24 +5,50 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-image",
+    "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`, // 画像ファイルのディレクトリ
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          "gatsby-remark-prismjs-title",
+          "gatsby-remark-prismjs",
+        ],
+      },
+    },
+/*    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `tech`,
         path: `${__dirname}/tech`,
       },
     },
-    {
+*/
+/*    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `diary`,
         path: `${__dirname}/diary`,
       },
     },
-    "gatsby-plugin-mdx",
+*/
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `article`,
+        path: `${__dirname}/article`,
+      },
+    },
     "gatsby-plugin-sitemap",
-    "gatsby-transformer-sharp",
+
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-theme-ui",
@@ -49,5 +75,6 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-postcss',
   ],
 };
