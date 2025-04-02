@@ -3,31 +3,32 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaRegCalendarAlt, FaTags } from "react-icons/fa";
 import Tag from "../components/Tag";
 
 // MDX v2では children として内容が渡される
 const BlogPost = ({ data, children }) => {
-  console.log(children)
   const post = data.mdx;
   const image = post.frontmatter.hero_image ? getImage(post.frontmatter.hero_image) : null;
   
   return (
-    <Layout pageTitle={post.frontmatter.title}>
-      <article className="max-w-3xl mx-auto">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">{post.frontmatter.title}</h1>
+    <Layout>
+      <article className="max-w-3xl mx-auto bg-white rounded-xl shadow-sm p-6 md:p-8">
+        <header className="mb-8 pb-4 border-b border-gray-100">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">{post.frontmatter.title}</h1>
           
-          <div className="flex items-center text-gray-600 mb-4">
-            <FaRegCalendarAlt className="mr-1" />
-            <span>Posted: {post.frontmatter.date}</span>
-          </div>
-          
-          {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-            <div className="mb-4">
-              <Tag tags={post.frontmatter.tags} />
+          <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-4">
+            <div className="flex items-center">
+              <FaRegCalendarAlt className="mr-2" />
+              <span>Posted: {post.frontmatter.date}</span>
             </div>
-          )}
+            
+            {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+              <div className="flex items-center">
+                <Tag tags={post.frontmatter.tags} />
+              </div>
+            )}
+          </div>
         </header>
         
         {image && (
@@ -35,17 +36,17 @@ const BlogPost = ({ data, children }) => {
             <GatsbyImage 
               image={image} 
               alt={post.frontmatter.hero_image_alt || post.frontmatter.title} 
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md w-full"
             />
             {post.frontmatter.hero_image_credit_text && (
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-gray-500 mt-2 text-right italic">
                 Photo: {post.frontmatter.hero_image_credit_text}
               </p>
             )}
           </div>
         )}
         
-        <div className="prose max-w-none">
+        <div className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-a:text-orange-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-md">
           {children}
         </div>
       </article>
