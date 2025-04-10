@@ -44,6 +44,7 @@
     "theme-ui": "^0.17.2"
   },
   "devDependencies": {
+    "@parcel/watcher": "^2.5.1",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",

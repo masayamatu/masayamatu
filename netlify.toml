@@ -1,0 +1,3 @@
+[build]
+  command = "npm install --include=optional && gatsby build"
+  publish = "public"
