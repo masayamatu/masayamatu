@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://masayamatumain.gtsb.io",
+    siteUrl: "https://masayamatu.netlify.app/",
     title: "Masayamatu's Tech Labo",
   },
   plugins: [
