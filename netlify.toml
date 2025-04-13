@@ -1,3 +1,7 @@
 [build]
   command = "npm install --include=optional && gatsby build"
   publish = "public"
+[[headers]]
+  for = "/sitemap*.xml"
+  [headers.values]
+    Content-Type = "application/xml"
